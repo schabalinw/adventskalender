@@ -60,6 +60,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Adventskalender</title>
+</svelte:head>
+
 <main class:puzzle-view={puzzleView} bind:offsetWidth={viewportWidth}>
 	{#if shownDay == 0}
 		<h1 in:fly={{ duration: 500, y: 25 }}>
