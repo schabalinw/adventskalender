@@ -147,9 +147,16 @@
 </main>
 
 <style>
+	:global(body) {
+		background-color: var(--tone-5);
+	}
+
+	:global(body:has(main.puzzle-view)) {
+		background-color: #101726 !important;
+	}
+
 	main {
 		width: 100%;
-		background-color: var(--tone-5);
 		color: var(--tone-0);
 		min-height: 100vh;
 		display: flex;
@@ -160,8 +167,8 @@
 		transition: 200ms background-color;
 	}
 
-	main.puzzle-view {
-		background-color: #101726 !important;
+	main.puzzle-view > *:not(.snowflake-container) {
+		z-index: 10;
 	}
 
 	h1 {
@@ -323,10 +330,6 @@
 
 	.puzzle-wrapper {
 		cursor: pointer;
-	}
-
-	.puzzle-container {
-		z-index: 10;
 	}
 
 	.message {

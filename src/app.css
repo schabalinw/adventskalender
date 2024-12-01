@@ -27,7 +27,3 @@
 	--tone-7: #16223c;
 	--tone-8: #101726;
 }
-
-body {
-	background-color: var(--tone-5);
-}
