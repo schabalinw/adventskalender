@@ -1,3 +1,3 @@
 # Adventskalender
 
-Ein digitaler Adventskalender mit kleinen Rätseln für Mama, Papa, Muck und Stephan.
+Ein digitaler Adventskalender mit Schiebepuzzles für meine Familie.
