@@ -1,3 +1,3 @@
 # Adventskalender
 
-Ein digitaler Adventskalender mit Schiebepuzzles für meine Familie.
+Ein kleiner Adventskalender für meine Familie.
