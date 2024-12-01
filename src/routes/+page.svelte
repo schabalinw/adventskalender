@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '../app.css';
 	import { fly, slide } from 'svelte/transition';
 	import Puzzle from './Puzzle.svelte';
 	import type { PuzzleProps } from './Puzzle.svelte';
@@ -22,7 +23,7 @@
 	};
 
 	const MESSAGES: { [day: number]: string } = {
-		1: 'Ein einfacher Start in die Adventszeit!'
+		1: 'Miau! Und so beginnt die Adventszeit.'
 	};
 
 	let puzzleData: { [day: number]: PuzzleProps } = $state(structuredClone(PUZZLES));

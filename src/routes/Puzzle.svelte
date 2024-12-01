@@ -38,8 +38,6 @@
 			Math.floor(spaceTileIndex / columns)
 		];
 
-		console.log(layout[spaceTileY][spaceTileX]);
-
 		if (spaceTileY > 0 && layout[spaceTileY - 1][spaceTileX] == tile) {
 			return 'top';
 		}
@@ -79,8 +77,6 @@
 		) {
 			layout[tileY][tileX] = spaceTile;
 			layout[spaceTileY][spaceTileX] = tile;
-
-			console.log(layout);
 		}
 	}
 </script>
@@ -225,6 +221,10 @@
 	.arrow-indicator.bottom {
 		rotate: 180deg;
 		top: calc(-2 * var(--arrow-size) - var(--offset));
+	}
+
+	.tile.complete .arrow-indicator {
+		border-color: transparent;
 	}
 
 	.tile.space {
