@@ -13,20 +13,29 @@
 
 	const PUZZLES: { [day: number]: PuzzleProps } = {
 		1: {
-			image: 'images/bastet.jpg',
+			image: 'images/01.jpg',
 			layout: [
 				[4, 0, 5],
 				[2, 7, 6],
 				[3, 1, 8]
 			]
+		},
+		2: {
+			image: 'images/02.jpg',
+			layout: [
+				[0, 9, 7, 2],
+				[5, 8, 10, 4],
+				[3, 6, 1, 11]
+			]
 		}
 	};
 
 	const MESSAGES: { [day: number]: string } = {
-		1: 'Miau! Und so beginnt die Adventszeit.'
+		1: 'Miau! Und so beginnt die Adventszeit.',
+		2: 'Zweimal miau für das zweite Türchen.'
 	};
 
-	let puzzleData: { [day: number]: PuzzleProps } = $state(structuredClone(PUZZLES));
+	let puzzleData: { [day: number]: number[][] } = $state({});
 
 	let viewportWidth: number = $state(0);
 	let shownDay: number = $state(0);
@@ -36,8 +45,8 @@
 	let puzzleView = $derived(shownDay != 0);
 
 	function showPuzzle(day: number) {
-		if (isComplete(puzzleData[day].layout)) {
-			puzzleData[day] = structuredClone(PUZZLES[day]);
+		if (puzzleData[day] && isComplete(puzzleData[day])) {
+			puzzleData[day] = structuredClone(PUZZLES[day].layout);
 		}
 
 		shownDay = day;
@@ -48,14 +57,25 @@
 	}
 
 	onMount(() => {
-		const foundData = localStorage.getItem('puzzle-data');
+		for (let day = 1; day <= 24; day++) {
+			if (PUZZLES[day]) puzzleData[day] = PUZZLES[day].layout;
+		}
 
+		// migration
+		const foundOldData = localStorage.getItem('puzzle-data');
+		if (foundOldData) {
+			puzzleData[1] = JSON.parse(foundOldData)[1].layout;
+
+			localStorage.removeItem('puzzle-data');
+		}
+
+		const foundData = localStorage.getItem('puzzles');
 		if (foundData) {
 			puzzleData = JSON.parse(foundData);
 		}
 
 		$effect(() => {
-			localStorage.setItem('puzzle-data', JSON.stringify(puzzleData));
+			localStorage.setItem('puzzles', JSON.stringify(puzzleData));
 		});
 	});
 </script>
@@ -73,9 +93,8 @@
 
 		<div class="calendar" in:fly={{ duration: 500, y: 50 }}>
 			{#each DAYS as day}
-				{@const puzzle = puzzleData[day]}
 				{@const locked = day > new Date().getDate()}
-				{@const complete = puzzle ? isComplete(puzzle.layout) : false}
+				{@const complete = puzzleData[day] ? isComplete(puzzleData[day]) : false}
 
 				<div class="day" class:locked class:complete style="animation-delay: {day * 10}ms;">
 					<div class="hint">
@@ -88,14 +107,13 @@
 						{/if}
 					</div>
 
-					{#if puzzle}
+					{#if PUZZLES[day] && puzzleData[day]}
 						<button class="puzzle-wrapper" onclick={() => showPuzzle(day)}>
 							<Puzzle
-								image={puzzle.image}
-								bind:layout={puzzle.layout}
+								image={PUZZLES[day].image}
+								bind:layout={puzzleData[day]}
 								preview
 								width={100}
-								height={100}
 							/>
 						</button>
 					{/if}
@@ -107,20 +125,17 @@
 			{/each}
 		</div>
 	{:else}
-		{@const puzzle = puzzleData[shownDay]}
-
 		<h1 in:fly={{ duration: 500, y: 25 }}>{shownDay}. Türchen</h1>
 
 		<div class="puzzle-container" in:fly={{ duration: 500, y: 50 }}>
 			<Puzzle
-				image={puzzle.image}
-				bind:layout={puzzle.layout}
+				image={PUZZLES[shownDay].image}
+				bind:layout={puzzleData[shownDay]}
 				width={puzzleViewWidth}
-				height={puzzleViewWidth}
 			/>
 		</div>
 
-		{#if isComplete(puzzle.layout)}
+		{#if puzzleData[shownDay] && isComplete(puzzleData[shownDay])}
 			<div class="message" in:slide={{ duration: 200, delay: 2000, axis: 'y' }}>
 				{MESSAGES[shownDay]}
 			</div>
@@ -269,7 +284,7 @@
 
 	.door.type-4 {
 		background-image: linear-gradient(to top, var(--tone-1) 7px, var(--tone-2) 7px);
-		color: #0e347f;
+		color: var(--tone-6);
 	}
 
 	.door::before {
@@ -326,7 +341,7 @@
 		--hint-color: #22702c;
 	}
 
-	.day:has(:global(.hint)):hover .hint {
+	.day:hover .hint {
 		bottom: calc(100% + 20px);
 		scale: 1;
 		transition-delay: 150ms;

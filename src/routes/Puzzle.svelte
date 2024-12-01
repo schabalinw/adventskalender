@@ -7,7 +7,6 @@
 		image: string;
 		layout: number[][];
 		width?: number;
-		height?: number;
 		preview?: boolean;
 	}
 
@@ -18,12 +17,13 @@
 			[1, 0]
 		]),
 		width = 300,
-		height = 300,
 		preview = false
 	}: PuzzleProps = $props();
 
 	let columns = $derived(layout[0].length);
 	let rows = $derived(layout.length);
+
+	let height = $derived((width / columns) * rows);
 
 	let complete = $derived(isComplete(layout));
 
@@ -77,6 +77,9 @@
 		) {
 			layout[tileY][tileX] = spaceTile;
 			layout[spaceTileY][spaceTileX] = tile;
+
+			// debug: create puzzles
+			console.log(layout);
 		}
 	}
 </script>
@@ -191,7 +194,6 @@
 	}
 
 	.arrow-indicator {
-		pointer-events: none;
 		--arrow-size: 10px;
 		--offset: 8px;
 		position: absolute;
