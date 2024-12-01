@@ -1,0 +1,87 @@
+@font-face {
+	font-family: 'Inter';
+	src: url('fonts/inter.ttf');
+}
+
+@font-face {
+	font-family: 'Jetbrains Mono';
+	src: url('fonts/jetbrains_mono.ttf');
+}
+
+@font-face {
+	font-family: 'Mea Culpa';
+	src: url('fonts/mea_culpa.ttf');
+}
+
+@font-face {
+	font-family: 'Charm';
+	src: url('fonts/charm.ttf');
+}
+
+@font-face {
+	font-family: 'Staatliches';
+	src: url('fonts/staatliches.ttf');
+}
+
+@font-face {
+	font-family: 'Noto Serif Hong Kong';
+	src: url('fonts/noto-serif-hong-kong.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Old Standard TT';
+	src: url('fonts/old-standard-tt.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Old Standard TT';
+	src: url('fonts/old-standard-tt-bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Old Standard TT';
+	src: url('fonts/old-standard-tt-italic.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Minecraftia';
+	src: url('fonts/minecraftia.ttf');
+}
+
+* {
+	box-sizing: border-box;
+	background-color: transparent;
+	color: inherit;
+	padding: 0;
+	margin: 0;
+	border: none;
+	font: inherit;
+	text-decoration: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+:root {
+	--tone-0: #fff;
+
+	--tone-1: #bcf4ff;
+	--tone-2: #67e3ff;
+	--tone-3: #3cbcd9;
+	--tone-4: #00b1d9;
+
+	--tone-5: #0888a5;
+
+	--tone-6: #0c2f74;
+
+	--tone-7: #16223c;
+	--tone-8: #101726;
+}
+
+body {
+	background-color: var(--tone-5);
+}
