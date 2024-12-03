@@ -78,8 +78,10 @@
 			layout[tileY][tileX] = spaceTile;
 			layout[spaceTileY][spaceTileX] = tile;
 
-			// debug: create puzzles
-			console.log(layout);
+			// for creating the puzzles
+			if (import.meta.env.MODE === 'development') {
+				console.log(layout);
+			}
 		}
 	}
 </script>

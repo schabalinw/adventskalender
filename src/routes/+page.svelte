@@ -13,6 +13,8 @@
 
 	let puzzleData: { [day: number]: number[][] } = $state({});
 
+	const today = import.meta.env.MODE === 'development' ? new Date(2024, 11, 24) : new Date();
+
 	let viewportWidth: number = $state(0);
 	let shownDay: number = $state(0);
 
@@ -37,7 +39,7 @@
 			if (PUZZLES[day]) puzzleData[day] = PUZZLES[day].layout;
 		}
 
-		// migration
+		// migration from old storage structure
 		const foundOldData = localStorage.getItem('puzzle-data');
 		if (foundOldData) {
 			puzzleData[1] = JSON.parse(foundOldData)[1].layout;
@@ -69,7 +71,7 @@
 
 		<div class="calendar" in:fly={{ duration: 500, y: 50 }}>
 			{#each DAYS as day}
-				{@const locked = day > new Date().getDate()}
+				{@const locked = day > today.getDate()}
 				{@const complete = puzzleData[day] ? isComplete(puzzleData[day]) : false}
 
 				<div class="day" class:locked class:complete style="animation-delay: {day * 10}ms;">
