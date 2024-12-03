@@ -40,5 +40,14 @@ export const PUZZLES: {
 			[4, 2, 12]
 		],
 		caption: 'Super! P.S. Ist das Molly oder Frida?'
+	},
+	5: {
+		image: 'images/05.jpg',
+		layout: [
+			[5, 3, 6],
+			[7, 0, 4],
+			[1, 2, 8]
+		],
+		caption: 'Und rechtzeitig schlafen gehen!'
 	}
 };
