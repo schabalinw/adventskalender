@@ -27,12 +27,20 @@
 				[5, 8, 10, 4],
 				[3, 6, 1, 11]
 			]
+		},
+		3: {
+			image: 'images/03.jpg',
+			layout: [
+				[5, 0, 4, 2],
+				[1, 6, 3, 7]
+			]
 		}
 	};
 
 	const MESSAGES: { [day: number]: string } = {
 		1: 'Miau! Und so beginnt die Adventszeit.',
-		2: 'Zweimal miau für das zweite Türchen.'
+		2: 'Zweimal miau für das zweite Türchen.',
+		3: 'Heute etwas einfacher!'
 	};
 
 	let puzzleData: { [day: number]: number[][] } = $state({});
@@ -71,7 +79,7 @@
 
 		const foundData = localStorage.getItem('puzzles');
 		if (foundData) {
-			puzzleData = JSON.parse(foundData);
+			puzzleData = Object.assign(puzzleData, JSON.parse(foundData));
 		}
 
 		$effect(() => {
