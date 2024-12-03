@@ -6,7 +6,7 @@
 	export interface PuzzleProps {
 		image: string;
 		layout: number[][];
-		width?: number;
+		size?: number;
 		preview?: boolean;
 	}
 
@@ -16,14 +16,15 @@
 			[2, 3],
 			[1, 0]
 		]),
-		width = 300,
+		size = 300,
 		preview = false
 	}: PuzzleProps = $props();
 
 	let columns = $derived(layout[0].length);
 	let rows = $derived(layout.length);
 
-	let height = $derived((width / columns) * rows);
+	let width = $derived(columns >= rows ? size : (size / rows) * columns);
+	let height = $derived(rows >= columns ? size : (size / columns) * rows);
 
 	let complete = $derived(isComplete(layout));
 

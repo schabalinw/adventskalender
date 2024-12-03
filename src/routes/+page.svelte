@@ -87,12 +87,7 @@
 
 					{#if PUZZLES[day] && puzzleData[day]}
 						<button class="puzzle-wrapper" onclick={() => showPuzzle(day)}>
-							<Puzzle
-								image={PUZZLES[day].image}
-								bind:layout={puzzleData[day]}
-								preview
-								width={100}
-							/>
+							<Puzzle image={PUZZLES[day].image} bind:layout={puzzleData[day]} preview size={100} />
 						</button>
 					{/if}
 
@@ -109,7 +104,7 @@
 			<Puzzle
 				image={PUZZLES[shownDay].image}
 				bind:layout={puzzleData[shownDay]}
-				width={puzzleViewWidth}
+				size={puzzleViewWidth}
 			/>
 		</div>
 
