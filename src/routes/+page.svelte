@@ -2,46 +2,14 @@
 	import '../app.css';
 	import { fly, slide } from 'svelte/transition';
 	import Puzzle from './Puzzle.svelte';
-	import type { PuzzleProps } from './Puzzle.svelte';
 	import Snowflake from './Snowflake.svelte';
 	import { isComplete } from '$lib';
 	import { onMount } from 'svelte';
+	import { PUZZLES } from '$lib/assets/puzzles';
 
 	const DAYS = [
 		7, 14, 9, 23, 15, 2, 20, 3, 12, 17, 19, 5, 11, 24, 8, 18, 4, 21, 6, 13, 10, 1, 16, 22
 	];
-
-	const PUZZLES: { [day: number]: PuzzleProps } = {
-		1: {
-			image: 'images/01.jpg',
-			layout: [
-				[4, 0, 5],
-				[2, 7, 6],
-				[3, 1, 8]
-			]
-		},
-		2: {
-			image: 'images/02.jpg',
-			layout: [
-				[0, 9, 7, 2],
-				[5, 8, 10, 4],
-				[3, 6, 1, 11]
-			]
-		},
-		3: {
-			image: 'images/03.jpg',
-			layout: [
-				[5, 0, 4, 2],
-				[1, 6, 3, 7]
-			]
-		}
-	};
-
-	const MESSAGES: { [day: number]: string } = {
-		1: 'Miau! Und so beginnt die Adventszeit.',
-		2: 'Zweimal miau für das zweite Türchen.',
-		3: 'Heute etwas einfacher!'
-	};
 
 	let puzzleData: { [day: number]: number[][] } = $state({});
 
@@ -145,7 +113,7 @@
 
 		{#if puzzleData[shownDay] && isComplete(puzzleData[shownDay])}
 			<div class="message" in:slide={{ duration: 200, delay: 2000, axis: 'y' }}>
-				{MESSAGES[shownDay]}
+				{PUZZLES[shownDay].caption}
 			</div>
 		{/if}
 
