@@ -86,13 +86,15 @@
 					</div>
 
 					{#if PUZZLES[day] && puzzleData[day]}
-						<button class="puzzle-wrapper" onclick={() => showPuzzle(day)}>
+						<button class="puzzle-wrapper" class:frame={complete} onclick={() => showPuzzle(day)}>
 							<Puzzle image={PUZZLES[day].image} bind:layout={puzzleData[day]} preview size={100} />
 						</button>
 					{/if}
 
 					{#if !complete}
 						<div class="door type-{(day % 4) + 1}">{day}</div>
+					{:else}
+						<div class="day-number">{day}</div>
 					{/if}
 				</div>
 			{/each}
@@ -210,6 +212,25 @@
 		animation: day-pop-in 400ms backwards;
 	}
 
+	.day.complete {
+		background-color: var(--tone-6);
+		outline: 3px solid var(--tone-7);
+		outline-offset: -3px;
+	}
+
+	.day-number {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		background-color: var(--tone-7);
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 20px;
+	}
+
 	@keyframes day-pop-in {
 		from {
 			translate: 0 10px;
@@ -322,6 +343,10 @@
 
 	.puzzle-wrapper {
 		cursor: pointer;
+	}
+
+	.puzzle-wrapper.frame {
+		outline: 2px solid var(--tone-0);
 	}
 
 	.message {
