@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import { fly, slide } from 'svelte/transition';
+	import { fade, fly, slide } from 'svelte/transition';
 	import Puzzle from './Puzzle.svelte';
 	import Snowflake from './Snowflake.svelte';
 	import { isComplete } from '$lib';
@@ -17,6 +17,7 @@
 
 	let viewportWidth: number = $state(0);
 	let shownDay: number = $state(0);
+	let viewedImage = $state('');
 
 	let snowflakeCount = $derived(viewportWidth > 1000 ? 20 : 10);
 	let puzzleViewWidth = $derived(viewportWidth > 600 ? 400 : 250);
@@ -32,6 +33,14 @@
 
 	function hidePuzzle() {
 		shownDay = 0;
+	}
+
+	function viewImage(image: string) {
+		viewedImage = image;
+	}
+
+	function hideImage() {
+		viewedImage = '';
 	}
 
 	onMount(() => {
@@ -52,6 +61,7 @@
 			puzzleData = Object.assign(puzzleData, JSON.parse(foundData));
 		}
 
+		// fix day 4 bug
 		if (puzzleData[4] && !isComplete(puzzleData[4])) {
 			puzzleData[4] = PUZZLES[4].layout;
 		}
@@ -99,6 +109,30 @@
 						<div class="door type-{(day % 4) + 1}">{day}</div>
 					{:else}
 						<div class="day-number">{day}</div>
+
+						<button
+							class="view-image-button"
+							onclick={() => viewImage(PUZZLES[day].image)}
+							aria-label="view"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="24"
+								height="24"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								class="lucide lucide-expand"
+								><path d="m21 21-6-6m6 6v-4.8m0 4.8h-4.8" /><path
+									d="M3 16.2V21m0 0h4.8M3 21l6-6"
+								/><path d="M21 7.8V3m0 0h-4.8M21 3l-6 6" /><path
+									d="M3 7.8V3m0 0h4.8M3 3l6 6"
+								/></svg
+							>
+						</button>
 					{/if}
 				</div>
 			{/each}
@@ -142,6 +176,24 @@
 			{/if}
 		{/each}
 	</div>
+
+	{#if viewedImage}
+		<!-- svelte-ignore a11y_click_events_have_key_events -->
+		<!-- svelte-ignore a11y_no_static_element_interactions -->
+
+		<div class="image-view-modal" onclick={hideImage} transition:fade={{ duration: 200 }}>
+			<img
+				src={viewedImage}
+				alt=""
+				class="viewed-image"
+				transition:fly={{ duration: 400, y: 50 }}
+			/>
+
+			<button class="close-viewed-image-button" transition:fly={{ duration: 400, y: 100 }}
+				>Schließen</button
+			>
+		</div>
+	{/if}
 </main>
 
 <style>
@@ -233,6 +285,20 @@
 		align-items: center;
 		justify-content: center;
 		font-size: 20px;
+	}
+
+	.view-image-button {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		background-color: var(--tone-7);
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 20px;
+		cursor: pointer;
 	}
 
 	@keyframes day-pop-in {
@@ -339,7 +405,7 @@
 		--hint-color: #22702c;
 	}
 
-	.day:hover .hint {
+	.day:hover:not(:has(.view-image-button:hover)) .hint {
 		bottom: calc(100% + 20px);
 		scale: 1;
 		transition-delay: 150ms;
@@ -375,7 +441,7 @@
 	.back-button {
 		background-color: var(--tone-7);
 		border-bottom: 5px solid var(--tone-6);
-		color: #fff;
+		color: var(--tone-0);
 		padding: 10px 25px;
 		cursor: pointer;
 		font-size: 20px;
@@ -387,5 +453,33 @@
 		inset: 0;
 		overflow: hidden;
 		pointer-events: none;
+	}
+
+	.image-view-modal {
+		z-index: 100;
+		position: fixed;
+		inset: 0;
+		background-color: #00000088;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.viewed-image {
+		max-height: 50vh;
+		max-width: 70vw;
+		outline: 5px solid #fff;
+	}
+
+	.close-viewed-image-button {
+		background-color: var(--tone-2);
+		border-bottom: 5px solid var(--tone-1);
+		color: var(--tone-6);
+		padding: 10px 25px;
+		cursor: pointer;
+		font-size: 20px;
+		margin-top: 50px;
 	}
 </style>
