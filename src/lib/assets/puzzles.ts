@@ -49,5 +49,15 @@ export const PUZZLES: {
 			[1, 2, 8]
 		],
 		caption: 'Und rechtzeitig schlafen gehen!'
+	},
+	6: {
+		image: 'images/06.jpg',
+		layout: [
+			[1, 8, 6, 14],
+			[3, 12, 2, 10],
+			[0, 4, 11, 5],
+			[9, 7, 13, 15]
+		],
+		caption: 'Kleiner Tipp: Nicht bei Bastet nachmachen!'
 	}
 };
