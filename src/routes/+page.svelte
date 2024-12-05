@@ -52,6 +52,10 @@
 			puzzleData = Object.assign(puzzleData, JSON.parse(foundData));
 		}
 
+		if (puzzleData[4] && !isComplete(puzzleData[4])) {
+			puzzleData[4] = PUZZLES[4].layout;
+		}
+
 		$effect(() => {
 			localStorage.setItem('puzzles', JSON.stringify(puzzleData));
 		});

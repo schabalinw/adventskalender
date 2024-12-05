@@ -34,10 +34,10 @@ export const PUZZLES: {
 	4: {
 		image: 'images/04.jpg',
 		layout: [
-			[7, 11, 9],
-			[1, 8, 6],
-			[3, 10, 5],
-			[4, 2, 12]
+			[5, 4, 3],
+			[9, 1, 2],
+			[10, 0, 7],
+			[8, 6, 11]
 		],
 		caption: 'Super! P.S. Ist das Molly oder Frida?'
 	},
