@@ -59,5 +59,34 @@ export const PUZZLES: {
 			[9, 7, 13, 15]
 		],
 		caption: 'Kleiner Tipp: Nicht bei Bastet nachmachen!'
+	},
+	7: {
+		image: 'images/07.jpg',
+		layout: [
+			[5, 4, 3],
+			[9, 1, 2],
+			[10, 0, 7],
+			[8, 6, 11]
+		],
+		caption: 'Bastet schläft auch mit Augen auf.'
+	},
+	8: {
+		image: 'images/08.jpg',
+		layout: [
+			[5, 3, 6],
+			[7, 0, 4],
+			[1, 2, 8]
+		],
+		caption: 'Einen schönen Zweiten Advent!'
+	},
+	9: {
+		image: 'images/09.jpg',
+		layout: [
+			[1, 8, 6, 14],
+			[3, 12, 2, 10],
+			[0, 4, 11, 5],
+			[9, 7, 13, 15]
+		],
+		caption: 'Och nö, Montag...'
 	}
 };
