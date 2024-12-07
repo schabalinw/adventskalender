@@ -93,14 +93,19 @@
 						{#if locked}
 							Noch ist es zu früh!
 						{:else if complete}
-							Zum Neustarten klicken!
+							Zum Anzeigen klicken!
 						{:else}
 							Zum Puzzeln klicken!
 						{/if}
 					</div>
 
 					{#if PUZZLES[day] && puzzleData[day]}
-						<button class="puzzle-wrapper" class:frame={complete} onclick={() => showPuzzle(day)}>
+						<button
+							class="puzzle-wrapper"
+							class:frame={complete}
+							disabled={locked}
+							onclick={complete ? () => viewImage(day) : () => showPuzzle(day)}
+						>
 							<Puzzle image={PUZZLES[day].image} bind:layout={puzzleData[day]} preview size={100} />
 						</button>
 					{/if}
@@ -110,7 +115,11 @@
 					{:else}
 						<div class="day-number">{day}</div>
 
-						<button class="view-image-button" onclick={() => viewImage(day)} aria-label="view">
+						<button
+							class="restart-puzzle-button"
+							onclick={() => showPuzzle(day)}
+							aria-label="restart"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="24"
@@ -121,11 +130,9 @@
 								stroke-width="2"
 								stroke-linecap="round"
 								stroke-linejoin="round"
-								class="lucide lucide-expand"
-								><path d="m21 21-6-6m6 6v-4.8m0 4.8h-4.8" /><path
-									d="M3 16.2V21m0 0h4.8M3 21l6-6"
-								/><path d="M21 7.8V3m0 0h-4.8M21 3l-6 6" /><path
-									d="M3 7.8V3m0 0h4.8M3 3l6 6"
+								class="lucide lucide-rotate-ccw"
+								><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /><path
+									d="M3 3v5h5"
 								/></svg
 							>
 						</button>
@@ -287,7 +294,7 @@
 		font-size: 20px;
 	}
 
-	.view-image-button {
+	.restart-puzzle-button {
 		position: absolute;
 		bottom: 0;
 		left: 0;
@@ -405,7 +412,7 @@
 		--hint-color: #22702c;
 	}
 
-	.day:hover:not(:has(.view-image-button:hover)) .hint {
+	.day:hover:not(:has(.restart-puzzle-button:hover)) .hint {
 		bottom: calc(100% + 20px);
 		scale: 1;
 		transition-delay: 150ms;
