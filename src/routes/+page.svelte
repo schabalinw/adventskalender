@@ -17,7 +17,7 @@
 
 	let viewportWidth: number = $state(0);
 	let shownDay: number = $state(0);
-	let viewedImage = $state('');
+	let viewedDay = $state(0);
 
 	let snowflakeCount = $derived(viewportWidth > 1000 ? 20 : 10);
 	let puzzleViewWidth = $derived(viewportWidth > 600 ? 400 : 250);
@@ -35,12 +35,12 @@
 		shownDay = 0;
 	}
 
-	function viewImage(image: string) {
-		viewedImage = image;
+	function viewImage(day: number) {
+		viewedDay = day;
 	}
 
 	function hideImage() {
-		viewedImage = '';
+		viewedDay = 0;
 	}
 
 	onMount(() => {
@@ -110,11 +110,7 @@
 					{:else}
 						<div class="day-number">{day}</div>
 
-						<button
-							class="view-image-button"
-							onclick={() => viewImage(PUZZLES[day].image)}
-							aria-label="view"
-						>
+						<button class="view-image-button" onclick={() => viewImage(day)} aria-label="view">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="24"
@@ -177,17 +173,21 @@
 		{/each}
 	</div>
 
-	{#if viewedImage}
+	{#if viewedDay != 0}
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
 
 		<div class="image-view-modal" onclick={hideImage} transition:fade={{ duration: 200 }}>
 			<img
-				src={viewedImage}
+				src={PUZZLES[viewedDay].image}
 				alt=""
 				class="viewed-image"
 				transition:fly={{ duration: 400, y: 50 }}
 			/>
+
+			<div class="viewed-image-caption" transition:fly={{ duration: 400, y: 75 }}>
+				{PUZZLES[viewedDay].caption}
+			</div>
 
 			<button class="close-viewed-image-button" transition:fly={{ duration: 400, y: 100 }}
 				>Schließen</button
@@ -471,6 +471,10 @@
 		max-height: 50vh;
 		max-width: 70vw;
 		outline: 5px solid #fff;
+	}
+
+	.viewed-image-caption {
+		font-size: 30px;
 	}
 
 	.close-viewed-image-button {
