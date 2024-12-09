@@ -98,7 +98,7 @@ export const PUZZLES: {
 			[10, 0, 7],
 			[8, 6, 11]
 		],
-		caption: 'Krieg ich was zu essen, bitte bitte?'
+		caption: 'Genug gespielt. Krieg ich was zu essen, bitte bitte?'
 	},
 	11: {
 		image: 'images/11.jpg',
@@ -107,7 +107,7 @@ export const PUZZLES: {
 			[7, 0, 4],
 			[1, 2, 8]
 		],
-		caption: 'Bastet bekommt mal wieder einen Korb in der Küche. Ihre Reaktion:'
+		caption: 'Bastets Blick, wenn sie mal wieder in der Küche einen Korb bekommt.'
 	},
 	12: {
 		image: 'images/12.jpg',
@@ -128,7 +128,7 @@ export const PUZZLES: {
 			[0, 4, 11, 5],
 			[9, 7, 13, 15]
 		],
-		caption: 'Bastets Dreifaltigkeit des Seins: Fressen, Schlafen und die Sonne.'
+		caption: 'Die Dreifaltigkeit des Katzenseins: Fressen, Schlafen und die Sonne.'
 	},
 	14: {
 		image: 'images/14.jpg',
