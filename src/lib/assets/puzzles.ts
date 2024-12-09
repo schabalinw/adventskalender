@@ -70,6 +70,7 @@ export const PUZZLES: {
 		],
 		caption: 'Bastet schläft auch mit Augen auf.'
 	},
+	// should have been 3x4 dimensions...
 	8: {
 		image: 'images/08.jpg',
 		layout: [
@@ -88,5 +89,84 @@ export const PUZZLES: {
 			[9, 7, 13, 15]
 		],
 		caption: 'Och nö, Montag...'
+	},
+	10: {
+		image: 'images/10.jpg',
+		layout: [
+			[5, 4, 3],
+			[9, 1, 2],
+			[10, 0, 7],
+			[8, 6, 11]
+		],
+		caption: 'Krieg ich was zu essen, bitte bitte?'
+	},
+	11: {
+		image: 'images/11.jpg',
+		layout: [
+			[5, 3, 6],
+			[7, 0, 4],
+			[1, 2, 8]
+		],
+		caption: 'Bastet bekommt mal wieder einen Korb in der Küche. Ihre Reaktion:'
+	},
+	12: {
+		image: 'images/12.jpg',
+		layout: [
+			[9, 1, 8, 5],
+			[4, 7, 18, 11],
+			[17, 10, 14, 6],
+			[12, 3, 15, 2],
+			[13, 0, 16, 19]
+		],
+		caption: 'Zwiebeln schneiden.'
+	},
+	13: {
+		image: 'images/13.jpg',
+		layout: [
+			[1, 8, 6, 14],
+			[3, 12, 2, 10],
+			[0, 4, 11, 5],
+			[9, 7, 13, 15]
+		],
+		caption: 'Bastets Dreifaltigkeit des Seins: Fressen, Schlafen und die Sonne.'
+	},
+	14: {
+		image: 'images/14.jpg',
+		layout: [
+			[0, 9, 7, 2],
+			[5, 8, 10, 4],
+			[3, 6, 1, 11]
+		],
+		caption: 'Yippie! Wieder Wochenende!'
+	},
+	15: {
+		image: 'images/15.jpg',
+		layout: [
+			[0, 9, 7, 2],
+			[5, 8, 10, 4],
+			[3, 6, 1, 11]
+		],
+		caption: 'Bastet verschläft wider allen Erwartens den Dritten Advent.'
+	},
+	16: {
+		image: 'images/16.jpg',
+		layout: [
+			[1, 8, 6, 14],
+			[3, 12, 2, 10],
+			[0, 4, 11, 5],
+			[9, 7, 13, 15]
+		],
+		caption: 'Letzte Woche vor den Ferien!'
+	},
+	17: {
+		image: 'images/17.jpg',
+		layout: [
+			[5, 4, 3],
+			[9, 1, 2],
+			[10, 0, 7],
+			[8, 6, 11]
+		],
+		caption:
+			'Spoiler: Dies ist der Höhepunkt der in diesem Kalender ersichtlichen körperlichen Aktivität von Bastet.'
 	}
 };
