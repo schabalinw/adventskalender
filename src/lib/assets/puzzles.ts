@@ -168,5 +168,74 @@ export const PUZZLES: {
 		],
 		caption:
 			'Spoiler: Dies ist der Höhepunkt der in diesem Kalender ersichtlichen körperlichen Aktivität von Bastet.'
+	},
+	18: {
+		image: 'images/18.jpg',
+		layout: [
+			[5, 4, 3],
+			[9, 1, 2],
+			[10, 0, 7],
+			[8, 6, 11]
+		],
+		caption: 'Und wann gibt es wieder Essen?'
+	},
+	19: {
+		image: 'images/19.jpg',
+		layout: [
+			[1, 8, 6, 14],
+			[3, 12, 2, 10],
+			[0, 4, 11, 5],
+			[9, 7, 13, 15]
+		],
+		caption: 'Bastet philosophiert vor dem Katzenklo.'
+	},
+	20: {
+		image: 'images/20.jpg',
+		layout: [
+			[0, 9, 7, 2],
+			[5, 8, 10, 4],
+			[3, 6, 1, 11]
+		],
+		caption: 'Katze auf dem Kopf.'
+	},
+	21: {
+		image: 'images/21.jpg',
+		layout: [
+			[5, 3, 6],
+			[7, 0, 4],
+			[1, 2, 8]
+		],
+		caption: 'Höhepunkt des Tages.'
+	},
+	22: {
+		image: 'images/22.jpg',
+		layout: [
+			[5, 4, 3],
+			[9, 1, 2],
+			[10, 0, 7],
+			[8, 6, 11]
+		],
+		caption: 'Schnupper schnupper... Ist das der vierte Advent?'
+	},
+	23: {
+		image: 'images/23.jpg',
+		layout: [
+			[0, 9, 7, 2],
+			[5, 8, 10, 4],
+			[3, 6, 1, 11]
+		],
+		caption: 'Bastet träumt bestimmt vom Frühstück.'
+	},
+	24: {
+		image: 'images/24.jpg',
+		layout: [
+			[1, 6, 13, 4, 8],
+			[26, 2, 3, 7, 9],
+			[11, 0, 16, 14, 28],
+			[5, 10, 12, 25, 24],
+			[18, 15, 23, 22, 27],
+			[21, 20, 17, 19, 29]
+		],
+		caption: 'Frohe Weihnachten!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
 	}
 };
