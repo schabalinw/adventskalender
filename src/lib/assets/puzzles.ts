@@ -236,6 +236,6 @@ export const PUZZLES: {
 			[18, 15, 23, 22, 27],
 			[21, 20, 17, 19, 29]
 		],
-		caption: 'Frohe Weihnachten!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+		caption: 'Frohe Weihnachten und bis zum nächsten Jahr – Miau!'
 	}
 };
