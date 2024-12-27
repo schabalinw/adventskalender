@@ -2,7 +2,6 @@ export const PUZZLES: {
 	[day: number]: {
 		image: string;
 		layout: number[][];
-		caption: string;
 	};
 } = {
 	1: {
@@ -11,8 +10,7 @@ export const PUZZLES: {
 			[4, 0, 5],
 			[2, 7, 6],
 			[3, 1, 8]
-		],
-		caption: 'Miau! Und so beginnt die Adventszeit.'
+		]
 	},
 	2: {
 		image: 'images/02.jpg',
@@ -20,16 +18,14 @@ export const PUZZLES: {
 			[0, 9, 7, 2],
 			[5, 8, 10, 4],
 			[3, 6, 1, 11]
-		],
-		caption: 'Zweimal miau für das zweite Türchen.'
+		]
 	},
 	3: {
 		image: 'images/03.jpg',
 		layout: [
 			[5, 0, 4, 2],
 			[1, 6, 3, 7]
-		],
-		caption: 'Heute etwas einfacher!'
+		]
 	},
 	4: {
 		image: 'images/04.jpg',
@@ -38,8 +34,7 @@ export const PUZZLES: {
 			[9, 1, 2],
 			[10, 0, 7],
 			[8, 6, 11]
-		],
-		caption: 'Super! P.S. Ist das Molly oder Frida?'
+		]
 	},
 	5: {
 		image: 'images/05.jpg',
@@ -47,8 +42,7 @@ export const PUZZLES: {
 			[5, 3, 6],
 			[7, 0, 4],
 			[1, 2, 8]
-		],
-		caption: 'Und rechtzeitig schlafen gehen!'
+		]
 	},
 	6: {
 		image: 'images/06.jpg',
@@ -57,8 +51,7 @@ export const PUZZLES: {
 			[3, 12, 2, 10],
 			[0, 4, 11, 5],
 			[9, 7, 13, 15]
-		],
-		caption: 'Kleiner Tipp: Nicht bei Bastet nachmachen!'
+		]
 	},
 	7: {
 		image: 'images/07.jpg',
@@ -67,8 +60,7 @@ export const PUZZLES: {
 			[9, 1, 2],
 			[10, 0, 7],
 			[8, 6, 11]
-		],
-		caption: 'Bastet schläft auch mit Augen auf.'
+		]
 	},
 	// should have been 3x4 dimensions...
 	8: {
@@ -77,8 +69,7 @@ export const PUZZLES: {
 			[5, 3, 6],
 			[7, 0, 4],
 			[1, 2, 8]
-		],
-		caption: 'Einen schönen Zweiten Advent!'
+		]
 	},
 	9: {
 		image: 'images/09.jpg',
@@ -87,8 +78,7 @@ export const PUZZLES: {
 			[3, 12, 2, 10],
 			[0, 4, 11, 5],
 			[9, 7, 13, 15]
-		],
-		caption: 'Och nö, Montag...'
+		]
 	},
 	10: {
 		image: 'images/10.jpg',
@@ -97,8 +87,7 @@ export const PUZZLES: {
 			[9, 1, 2],
 			[10, 0, 7],
 			[8, 6, 11]
-		],
-		caption: 'Genug gespielt. Krieg ich was zu essen, bitte bitte?'
+		]
 	},
 	11: {
 		image: 'images/11.jpg',
@@ -106,8 +95,7 @@ export const PUZZLES: {
 			[5, 3, 6],
 			[7, 0, 4],
 			[1, 2, 8]
-		],
-		caption: 'Bastets Blick, wenn sie mal wieder in der Küche einen Korb bekommt.'
+		]
 	},
 	12: {
 		image: 'images/12.jpg',
@@ -117,8 +105,7 @@ export const PUZZLES: {
 			[17, 10, 14, 6],
 			[12, 3, 15, 2],
 			[13, 0, 16, 19]
-		],
-		caption: 'Zwiebeln schneiden.'
+		]
 	},
 	13: {
 		image: 'images/13.jpg',
@@ -127,8 +114,7 @@ export const PUZZLES: {
 			[3, 12, 2, 10],
 			[0, 4, 11, 5],
 			[9, 7, 13, 15]
-		],
-		caption: 'Die Dreifaltigkeit des Katzenseins: Fressen, Schlafen und die Sonne.'
+		]
 	},
 	14: {
 		image: 'images/14.jpg',
@@ -136,8 +122,7 @@ export const PUZZLES: {
 			[0, 9, 7, 2],
 			[5, 8, 10, 4],
 			[3, 6, 1, 11]
-		],
-		caption: 'Yippie! Wieder Wochenende!'
+		]
 	},
 	15: {
 		image: 'images/15.jpg',
@@ -145,8 +130,7 @@ export const PUZZLES: {
 			[0, 9, 7, 2],
 			[5, 8, 10, 4],
 			[3, 6, 1, 11]
-		],
-		caption: 'Bastet verschläft wider allen Erwartens den Dritten Advent.'
+		]
 	},
 	16: {
 		image: 'images/16.jpg',
@@ -155,8 +139,7 @@ export const PUZZLES: {
 			[3, 12, 2, 10],
 			[0, 4, 11, 5],
 			[9, 7, 13, 15]
-		],
-		caption: 'Letzte Woche vor den Ferien!'
+		]
 	},
 	17: {
 		image: 'images/17.jpg',
@@ -165,9 +148,7 @@ export const PUZZLES: {
 			[9, 1, 2],
 			[10, 0, 7],
 			[8, 6, 11]
-		],
-		caption:
-			'Spoiler: Dies ist der Höhepunkt der in diesem Kalender ersichtlichen körperlichen Aktivität von Bastet.'
+		]
 	},
 	18: {
 		image: 'images/18.jpg',
@@ -176,8 +157,7 @@ export const PUZZLES: {
 			[9, 1, 2],
 			[10, 0, 7],
 			[8, 6, 11]
-		],
-		caption: 'Und wann gibt es wieder Essen?'
+		]
 	},
 	19: {
 		image: 'images/19.jpg',
@@ -186,8 +166,7 @@ export const PUZZLES: {
 			[3, 12, 2, 10],
 			[0, 4, 11, 5],
 			[9, 7, 13, 15]
-		],
-		caption: 'Bastet philosophiert vor dem Katzenklo.'
+		]
 	},
 	20: {
 		image: 'images/20.jpg',
@@ -195,8 +174,7 @@ export const PUZZLES: {
 			[0, 9, 7, 2],
 			[5, 8, 10, 4],
 			[3, 6, 1, 11]
-		],
-		caption: 'Katze auf dem Kopf.'
+		]
 	},
 	21: {
 		image: 'images/21.jpg',
@@ -204,8 +182,7 @@ export const PUZZLES: {
 			[5, 3, 6],
 			[7, 0, 4],
 			[1, 2, 8]
-		],
-		caption: 'Höhepunkt des Tages.'
+		]
 	},
 	22: {
 		image: 'images/22.jpg',
@@ -214,8 +191,7 @@ export const PUZZLES: {
 			[9, 1, 2],
 			[10, 0, 7],
 			[8, 6, 11]
-		],
-		caption: 'Schnupper schnupper... Ist das der vierte Advent?'
+		]
 	},
 	23: {
 		image: 'images/23.jpg',
@@ -223,8 +199,7 @@ export const PUZZLES: {
 			[0, 9, 7, 2],
 			[5, 8, 10, 4],
 			[3, 6, 1, 11]
-		],
-		caption: 'Bastet träumt bestimmt vom Frühstück.'
+		]
 	},
 	24: {
 		image: 'images/24.jpg',
@@ -235,7 +210,6 @@ export const PUZZLES: {
 			[5, 10, 12, 25, 24],
 			[18, 15, 23, 22, 27],
 			[21, 20, 17, 19, 29]
-		],
-		caption: 'Frohe Weihnachten und bis zum nächsten Jahr – Miau!'
+		]
 	}
 };

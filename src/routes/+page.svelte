@@ -1,17 +1,20 @@
 <script lang="ts">
-	import '../app.css';
+	import '$lib/app.css';
 	import { fade, fly, slide } from 'svelte/transition';
 	import Puzzle from './Puzzle.svelte';
 	import Snowflake from './Snowflake.svelte';
 	import { isComplete } from '$lib';
 	import { onMount } from 'svelte';
 	import { PUZZLES } from '$lib/assets/puzzles';
+	import { locale, _ } from 'svelte-i18n';
 
 	const DAYS = [
 		7, 14, 9, 23, 15, 2, 20, 3, 12, 17, 19, 5, 11, 24, 8, 18, 4, 21, 6, 13, 10, 1, 16, 22
 	];
 
 	let puzzleData: { [day: number]: number[][] } = $state({});
+
+	let grannyMode = $state(false);
 
 	const today = import.meta.env.MODE === 'development' ? new Date(2024, 11, 24) : new Date();
 
@@ -43,6 +46,25 @@
 		viewedDay = 0;
 	}
 
+	function toggleGrannyMode() {
+		grannyMode = !grannyMode;
+	}
+
+	function generateSortedLayout(layout: number[][]): number[][] {
+		let counter = 0;
+		return layout.map((row) => row.map(() => counter++));
+	}
+
+	$effect(() => {
+		if (grannyMode) {
+			$locale = 'ru';
+		} else {
+			$locale = 'de';
+		}
+	});
+
+	$effect(() => console.log(shownDay));
+
 	onMount(() => {
 		for (let day = 1; day <= 24; day++) {
 			if (PUZZLES[day]) puzzleData[day] = PUZZLES[day].layout;
@@ -73,29 +95,29 @@
 </script>
 
 <svelte:head>
-	<title>Adventskalender</title>
+	<title>{$_('page-title')}</title>
 </svelte:head>
 
 <main class:puzzle-view={puzzleView} bind:offsetWidth={viewportWidth}>
 	{#if shownDay == 0}
 		<h1 in:fly={{ duration: 500, y: 25 }}>
-			<span>Ein kleiner</span> <br />
-			Adventskalender
+			<span>{$_('title.small')}</span> <br />
+			{$_('title.big')}
 		</h1>
 
 		<div class="calendar" in:fly={{ duration: 500, y: 50 }}>
 			{#each DAYS as day}
 				{@const locked = day > today.getDate()}
-				{@const complete = puzzleData[day] ? isComplete(puzzleData[day]) : false}
+				{@const complete = grannyMode || (puzzleData[day] ? isComplete(puzzleData[day]) : false)}
 
 				<div class="day" class:locked class:complete style="animation-delay: {day * 10}ms;">
 					<div class="hint">
 						{#if locked}
-							Noch ist es zu früh!
+							{$_('hint.locked')}
 						{:else if complete}
-							Zum Anzeigen klicken!
+							{$_('hint.complete')}
 						{:else}
-							Zum Puzzeln klicken!
+							{$_('hint.incomplete')}
 						{/if}
 					</div>
 
@@ -106,7 +128,21 @@
 							disabled={locked}
 							onclick={complete ? () => viewImage(day) : () => showPuzzle(day)}
 						>
-							<Puzzle image={PUZZLES[day].image} bind:layout={puzzleData[day]} preview size={100} />
+							{#if grannyMode}
+								<Puzzle
+									image={PUZZLES[day].image}
+									layout={generateSortedLayout(puzzleData[day])}
+									preview
+									size={100}
+								/>
+							{:else}
+								<Puzzle
+									image={PUZZLES[day].image}
+									bind:layout={puzzleData[day]}
+									preview
+									size={100}
+								/>
+							{/if}
 						</button>
 					{/if}
 
@@ -115,33 +151,41 @@
 					{:else}
 						<div class="day-number">{day}</div>
 
-						<button
-							class="restart-puzzle-button"
-							onclick={() => showPuzzle(day)}
-							aria-label="restart"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="24"
-								height="24"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								class="lucide lucide-rotate-ccw"
-								><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /><path
-									d="M3 3v5h5"
-								/></svg
+						{#if !grannyMode}
+							<button
+								class="restart-puzzle-button"
+								onclick={() => showPuzzle(day)}
+								aria-label="restart"
 							>
-						</button>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="lucide lucide-rotate-ccw"
+									><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /><path
+										d="M3 3v5h5"
+									/></svg
+								>
+							</button>
+						{/if}
 					{/if}
 				</div>
 			{/each}
 		</div>
+
+		<button class="granny-mode-button" onclick={toggleGrannyMode}>{$_('granny-mode')}</button>
 	{:else}
-		<h1 in:fly={{ duration: 500, y: 25 }}>{shownDay}. Türchen</h1>
+		<h1 in:fly={{ duration: 500, y: 25 }}>
+			{$_('door', {
+				values: { number: shownDay }
+			})}
+		</h1>
 
 		<div class="puzzle-container" in:fly={{ duration: 500, y: 50 }}>
 			<Puzzle
@@ -153,12 +197,12 @@
 
 		{#if puzzleData[shownDay] && isComplete(puzzleData[shownDay])}
 			<div class="message" in:slide={{ duration: 200, delay: 2000, axis: 'y' }}>
-				{PUZZLES[shownDay].caption}
+				{$_(`captions.day-${shownDay}`)}
 			</div>
 		{/if}
 
 		<button class="back-button" onclick={hidePuzzle} in:fly={{ duration: 500, y: 60 }}>
-			Zurück zum Kalender
+			{$_('calendar-back')}
 		</button>
 	{/if}
 
@@ -193,11 +237,11 @@
 			/>
 
 			<div class="viewed-image-caption" transition:fly={{ duration: 400, y: 75 }}>
-				{PUZZLES[viewedDay].caption}
+				{$_(`captions.day-${viewedDay}`)}
 			</div>
 
 			<button class="close-viewed-image-button" transition:fly={{ duration: 400, y: 100 }}
-				>Schließen</button
+				>{$_('close-view')}</button
 			>
 		</div>
 	{/if}
@@ -220,7 +264,7 @@
 		flex-direction: column;
 		align-items: center;
 		padding: 30px;
-		font-family: 'Staatliches';
+		font-family: 'Staatliches', 'Oswald';
 		transition: 200ms background-color;
 	}
 
@@ -230,7 +274,7 @@
 
 	h1 {
 		font-size: 40px;
-		margin: 30px 0;
+		margin: 20px 0;
 		line-height: 30px;
 	}
 
@@ -418,6 +462,14 @@
 		transition-delay: 150ms;
 	}
 
+	.granny-mode-button {
+		color: var(--tone-0);
+		cursor: pointer;
+		font-size: 20px;
+		margin-top: 20px;
+		text-decoration: underline 2px;
+	}
+
 	.puzzle-wrapper {
 		cursor: pointer;
 	}
@@ -466,7 +518,7 @@
 		z-index: 100;
 		position: fixed;
 		inset: 0;
-		background-color: #00000088;
+		background-color: #000000cb;
 		display: flex;
 		align-items: center;
 		justify-content: center;

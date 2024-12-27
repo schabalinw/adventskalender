@@ -1,0 +1,42 @@
+{
+	"title": {
+		"small": "Ein kleiner",
+		"big": "Adventskalender"
+	},
+	"hint": {
+		"locked": "Noch ist es zu früh!",
+		"complete": "Zum Anzeigen klicken!",
+		"incomplete": "Zum Puzzeln klicken!"
+	},
+	"page-title": "Adventskalender",
+	"calendar-back": "Zurück zum Kalender",
+	"close-view": "Schließen",
+	"captions": {
+		"day-1": "Miau! Und so beginnt die Adventszeit.",
+		"day-2": "Zweimal miau für das zweite Türchen.",
+		"day-3": "Heute etwas einfacher!",
+		"day-4": "Super! P.S. Ist das Molly oder Frida?",
+		"day-5": "Und rechtzeitig schlafen gehen!",
+		"day-6": "Kleiner Tipp: Nicht bei Bastet nachmachen!",
+		"day-7": "Bastet schläft auch mit Augen auf.",
+		"day-8": "Einen schönen Zweiten Advent!",
+		"day-9": "Och nö, Montag...",
+		"day-10": "Genug gespielt. Krieg ich was zu essen, bitte bitte?",
+		"day-11": "Bastets Blick, wenn sie mal wieder in der Küche einen Korb bekommt.",
+		"day-12": "Zwiebeln schneiden.",
+		"day-13": "Die Dreifaltigkeit des Katzenseins: Fressen, Schlafen und die Sonne.",
+		"day-14": "Yippie! Wieder Wochenende!",
+		"day-15": "Bastet verschläft wider allen Erwartens den Dritten Advent.",
+		"day-16": "Letzte Woche vor den Ferien!",
+		"day-17": "Spoiler: Dies ist der Höhepunkt der in diesem Kalender ersichtlichen körperlichen Aktivität von Bastet.",
+		"day-18": "Und wann gibt es wieder Essen?",
+		"day-19": "Bastet philosophiert vor dem Katzenklo.",
+		"day-20": "Katze auf dem Kopf.",
+		"day-21": "Höhepunkt des Tages.",
+		"day-22": "Schnupper schnupper... Ist das der vierte Advent?",
+		"day-23": "Bastet träumt bestimmt vom Frühstück.",
+		"day-24": "Frohe Weihnachten und bis zum nächsten Jahr – Miau!"
+	},
+	"door": "{number}. Türchen",
+	"granny-mode": "Режим для бабушки"
+}
